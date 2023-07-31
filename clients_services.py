@@ -20,41 +20,11 @@ class Client:
     def get_services(self):
         return self.__services
     
-    def print_os(self):
+    def print_os(self, order_number):
         
         excel_file = FileHandler()
-        excel_file.add_info(self.__client_name, self.__phone, self.__client_id, self.__services)
+        excel_file.add_info(self.__client_name, order_number, self.__phone, self.__client_id, self.__services)
         excel_file.convert_to_pdf(self.__client_name)
-
-class ListOfClients:
-
-    def __init__(self) -> None:
-        self.list = []
-
-    def add_client(self, name: str, phone: str):
-        new_client = Client(name, phone, (self.get_number_of_clients()+1))
-        self.list.append(new_client)
-
-    def get_number_of_clients(self):
-        return len(self.list)
-    
-    def get_list_of_clients(self):
-        return self.list
-    
-    def get_client(self, name: str):
-        for person in self.list:
-            if person.get_name() == name:
-                return person
-            
-    def add_service_to_client(self, name: str , service: 'Services'):
-        client = self.get_client(name)
-        client.add_service(service)
-    
-    def delete_client(self, name):
-        for person in self.list:
-            if person.client_name == name:
-                self.list.remove(person)
-                break
 
 class Services:
 

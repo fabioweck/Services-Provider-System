@@ -16,12 +16,13 @@ class FileHandler:
         for items in sheet.values:
             print(items)
 
-    def add_info(self, name, phone, id, services: list):
+    def add_info(self, name, order_number, phone, id, services: list):
 
         file = excel.load_workbook(f"{self.__path}files\\{self.__file}")
         sheet = file.active
 
         sheet.cell(row=10, column=2).value = name
+        sheet.cell(row=11, column=2).value = f"#00{order_number}"
         sheet.cell(row=12, column=2).value = phone
         sheet.cell(row=7, column=7).value = id
 
@@ -43,7 +44,7 @@ class FileHandler:
 
         wb = app.Workbooks.open(f'{self.__path}files\\{name}_{self.__file}')
         # output = os.path.splitext(file_location)[0]
-        output = f'{self.__path}work_orders\\{name}_{self.__file}'      
+        output = f'{self.__path}work_orders\\{name}_work_order'      
         wb.ActiveSheet.ExportAsFixedFormat(0, output)
         wb.Close()
         os.remove(f'{self.__path}files\\{name}_{self.__file}')
