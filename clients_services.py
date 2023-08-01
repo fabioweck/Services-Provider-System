@@ -1,15 +1,15 @@
-from file_handler import FileHandler
-
 class Client:
 
-    def __init__(self, name: str, phone: str, id: int) -> None:
+    def __init__(self, id: int, name: str, phone: str, email: str) -> None:
+        self.__client_id = id
         self.__client_name = name
         self.__phone = phone
-        self.__client_id = id
+        self.__email = email
         self.__services = []
+        self.__registry = {}
 
     def get_client_details(self):
-        return (self.__client_id, self.__client_name, self.__phone, len(self.__services))
+        return (self.__client_id, self.__client_name, self.__phone, self.__email,len(self.__services), len(self.__registry))
     
     def get_name(self):
         return self.__client_name
@@ -17,14 +17,14 @@ class Client:
     def add_service(self, service):
         self.__services.append(service)
 
+    def add_registry(self, order_number, service):
+        self.__registry[order_number] = service
+
     def get_services(self):
         return self.__services
     
-    def print_os(self, order_number):
-        
-        excel_file = FileHandler()
-        excel_file.add_info(self.__client_name, order_number, self.__phone, self.__client_id, self.__services)
-        excel_file.convert_to_pdf(self.__client_name)
+    def get_registry(self):
+        return self.__registry
 
 class Services:
 
