@@ -16,4 +16,4 @@ Currently I am switching from terminal commands to a GUI and adding a function t
 
 ![workorder](https://github.com/fabioweck/Services-Provider-System/assets/115494238/f1e8f9de-bca7-4a8f-85f9-4374d7b77bc2)
 
-"Work order produced by the program"
+"Work order produced by the program - All names and brands are fictional"
